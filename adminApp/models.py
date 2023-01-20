@@ -6,6 +6,7 @@ from django.db.models.deletion import CASCADE
 #manager table, category table, turf table
 
 class Categorydb(models.Model):
+    image = models.ImageField(upload_to='category')
     name = models.CharField(max_length=100)
 
 class Managerdb(models.Model):
