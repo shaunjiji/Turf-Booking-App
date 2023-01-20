@@ -10,8 +10,10 @@ class Categorydb(models.Model):
 
 class Managerdb(models.Model):
     name = models.CharField(max_length=100)
-
-
+    email = models.EmailField()
+    image = models.ImageField(upload_to='managers')
+    password = models.CharField(max_length=20)
+    
 class Turfdb(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
