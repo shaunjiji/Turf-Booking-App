@@ -6,4 +6,3 @@ urlpatterns = [
     path('categories/', views.viewCategories, name='view-categories')
 ]
 
-##routes for category, view all categories, add category, delete category, edit category?   
