@@ -1,7 +1,9 @@
 from django.contrib import admin
 from . models import *
 
-# Register your models here.
 
 
-admin.site.register(Categorydb, Managerdb, Turfdb)
+
+admin.site.register(Managerdb)
+admin.site.register(Categorydb)
+admin.site.register(Turfdb)
