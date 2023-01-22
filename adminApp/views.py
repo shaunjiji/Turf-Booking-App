@@ -21,3 +21,7 @@ def viewCategories(request):
     data = Categorydb.objects.all()
     return render(request, 'view-categories.html', {'data': data} )
 
+def deleteCategory(request, id):
+    Categorydb.objects.filter(id=id).delete()
+    return redirect('viewCategories')
+
