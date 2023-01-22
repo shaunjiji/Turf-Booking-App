@@ -25,3 +25,4 @@ def deleteCategory(request, id):
     Categorydb.objects.filter(id=id).delete()
     return redirect('viewCategories')
 
+
