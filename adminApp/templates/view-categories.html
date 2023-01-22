@@ -27,8 +27,8 @@
                             <td><img src="{{i.image.url}}" style="width: 50px;
                                     height: 50px;"></td>
                             <td>{{i.name}}</td>
-                            <td><span class="badge badge-success">Delivered</span></td>
-                            <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                            <td><button>Edit</button></td>
+                            <td><a href="{% url 'deleteCategory' id=i.id %}"><button>Delete</button></a></td>
                         </tr>
                         {% endfor %}
 
