@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . models import *
+from django.core.files.storage import FileSystemStorage
+from django.utils.datastructures import MultiValueDictKeyError
 
 # Create your views here.
 
@@ -25,4 +27,16 @@ def deleteCategory(request, id):
     Categorydb.objects.filter(id=id).delete()
     return redirect('viewCategories')
 
+def updateCategory(request, id):
+    if request.method == 'POST':
+        name_u = request.POST['name']
+        try:
+            image_u = request.FILES['image']
+            fs = FileSystemStorage()
+            file = fs.save(image_u.name, image_u)
+        except MultiValueDictKeyError:
+            file = Categorydb.objects.get(id=id).image
 
+            Categorydb.objects.filter(id=id).update(name=name_u, image=file)
+            return redirect('viewCategories')
+            

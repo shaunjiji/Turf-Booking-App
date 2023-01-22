@@ -8,3 +8,4 @@ urlpatterns = [
     path('delete-dategory/<int:id>', views.deleteCategory, name='deleteCategory')
 ]
  
+ 
