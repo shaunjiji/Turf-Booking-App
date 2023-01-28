@@ -9,7 +9,9 @@ urlpatterns = [
     path('update-category/<int:id>', views.updateCategory, name='updateCategory'),
     path('managers/', views.viewManagers, name='viewManagers'),
     path('delete-manager/<int:id>', views.deleteManager, name='deleteManager'),
-    path('add-manager/', views.addManager, name='addManager')
+    path('add-manager/', views.addManager, name='addManager'),
+    path('update-manager/<int:id>', views.updateManager, name='updateManager'),
+
 ]
  
  

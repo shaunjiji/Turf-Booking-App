@@ -72,4 +72,4 @@ def updateManager(request, id):
             file = Managerdb.objects.get(id=id).image
 
             Managerdb.objects.filter(id=id).update(name=name_u, email=email_u, password=password_u, image=file)
-            return redirect('viewManagers')
+            return redirect('view')
