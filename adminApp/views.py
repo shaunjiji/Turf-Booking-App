@@ -45,3 +45,6 @@ def viewManagers(request):
     data = Managerdb.objects.all()
     return render(request, 'view-managers.html', {'data': data})
             
+def deleteManager(request):
+    Managerdb.objects.filter(id=id).delete()
+    return redirect('viewManagers')
