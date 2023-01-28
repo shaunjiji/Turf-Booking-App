@@ -8,7 +8,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Add New Manager</h6>
     </div>
     <div class="card-body">
-        <form action="{% url 'addCategories' %}" method='post'
+        <form action="{% url 'addManager' %}" method='post'
             enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
