@@ -20,7 +20,6 @@ def addCategories(request):
         data = Categorydb(name = name_u, image = image_u)
         data.save()
         return redirect('viewCategories')
-    
     return render(request, 'add-categories.html')
 
 def deleteCategory(request, id):
@@ -50,13 +49,27 @@ def addManager(request):
         name_u = request.POST['name']
         email_u = request.POST['email']
         password_u = request.POST['password']
-        image_u = request.files['image']
+        image_u = request.FILES['image']
         data = Managerdb(name = name_u, email = email_u, password = password_u, image = image_u)
         data.save()
         return redirect('viewManagers')
-        
-
-            
+    return render(request, 'add-managers.html')
+       
 def deleteManager(request, id):
     Managerdb.objects.filter(id=id).delete()
     return redirect('viewManagers')
+
+def updateManager(request, id):
+    if request.method == 'POST':
+        name_u = request.POST['name']
+        email_u = request.POST['email']
+        password_u = request.POST['password']
+        try:
+            image_u = request.FILES['image']
+            fs = FileSystemStorage()
+            file = fs.save(image_u.name, image_u)
+        except MultiValueDictKeyError:
+            file = Managerdb.objects.get(id=id).image
+
+            Managerdb.objects.filter(id=id).update(name=name_u, email=email_u, password=password_u, image=file)
+            return redirect('viewManagers')
