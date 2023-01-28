@@ -39,4 +39,9 @@ def updateCategory(request, id):
 
             Categorydb.objects.filter(id=id).update(name=name_u, image=file)
             return redirect('viewCategories')
+
+
+def viewManagers(request):
+    data = Managerdb.objects.all()
+    return render(request, 'view-managers.html', {'data': data})
             
