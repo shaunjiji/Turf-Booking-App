@@ -9,6 +9,10 @@ from django.utils.datastructures import MultiValueDictKeyError
 def getDashboard(request):
     return render(request, 'index.html')
 
+def viewCategories(request):
+    data = Categorydb.objects.all()
+    return render(request, 'view-categories.html', {'data': data} )
+
 def addCategories(request):
     if request.method == 'POST':
         name_u = request.POST['name']
@@ -18,10 +22,6 @@ def addCategories(request):
         return redirect('viewCategories')
     
     return render(request, 'add-categories.html')
-
-def viewCategories(request):
-    data = Categorydb.objects.all()
-    return render(request, 'view-categories.html', {'data': data} )
 
 def deleteCategory(request, id):
     Categorydb.objects.filter(id=id).delete()
@@ -44,7 +44,11 @@ def updateCategory(request, id):
 def viewManagers(request):
     data = Managerdb.objects.all()
     return render(request, 'view-managers.html', {'data': data})
+
+# def addManager(request):
+#     if request.method == 'POST':
+#         name_u = request.POST['name']
             
-def deleteManager(request):
+def deleteManager(request, id):
     Managerdb.objects.filter(id=id).delete()
     return redirect('viewManagers')
