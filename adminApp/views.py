@@ -45,9 +45,17 @@ def viewManagers(request):
     data = Managerdb.objects.all()
     return render(request, 'view-managers.html', {'data': data})
 
-# def addManager(request):
-#     if request.method == 'POST':
-#         name_u = request.POST['name']
+def addManager(request):
+    if request.method == 'POST':
+        name_u = request.POST['name']
+        email_u = request.POST['email']
+        password_u = request.POST['password']
+        image_u = request.files['image']
+        data = Managerdb(name = name_u, email = email_u, password = password_u, image = image_u)
+        data.save()
+        return redirect('viewManagers')
+        
+
             
 def deleteManager(request, id):
     Managerdb.objects.filter(id=id).delete()
