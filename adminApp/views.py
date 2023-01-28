@@ -53,6 +53,9 @@ def addManager(request):
         data = Managerdb(name = name_u, email = email_u, password = password_u, image = image_u)
         data.save()
         return redirect('viewManagers')
+
+    elif request.method == 'GET':
+        return render(request, 'add-managers.html')
     return render(request, 'add-managers.html')
        
 def deleteManager(request, id):
