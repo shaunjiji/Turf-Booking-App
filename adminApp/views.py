@@ -20,6 +20,9 @@ def addCategories(request):
         data = Categorydb(name = name_u, image = image_u)
         data.save()
         return redirect('viewCategories')
+
+    elif request.method == 'GET':
+        return render(request, 'add-categories.html')
     return render(request, 'add-categories.html')
 
 def deleteCategory(request, id):
@@ -76,3 +79,11 @@ def updateManager(request, id):
 
             Managerdb.objects.filter(id=id).update(name=name_u, email=email_u, password=password_u, image=file)
             return redirect('view')
+
+
+
+def viewTurfs(request):
+    data = Turfdb.objects.all()
+    return render(request, 'view-turfs.html', {'data': data})
+
+
