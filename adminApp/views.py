@@ -85,13 +85,20 @@ def viewTurfs(request):
     return render(request, 'view-turfs.html', {'data': data})
 
 
-# def addTurf(request):
-#     if request.method == 'POST':
-#         name_u = request.POST['name']
-#         description_u = request.POST['description']
-#         image_u = request.FILES['image']
-#         price_u = request.POST['price']
-#         location_u = request.POST['location']
+def addTurf(request):
+    if request.method == 'POST':
+        name_u = request.POST['name']
+        description_u = request.POST['description']
+        image_u = request.FILES['image']
+        price_u = request.POST['price']
+        location_u = request.POST['location']
+        data = Turfdb(name=name_u, desciprtion=description_u, image=image_u, price=price_u, location=location_u)
+        data.save()
+
+    elif request.method == 'GET':
+        managers = Managerdb.objects.all()
+        categories = Categorydb.objects.all()
+        return render(request, 'add-turfs.html', {'managers':managers, 'categories': categories})
 
 
 def deleteTurf(request, id):

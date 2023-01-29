@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% block title%}
+{% endblock title%}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center
+        justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Add New Category</h6>
+    </div>
+    <div class="card-body">
+        <form action="{% url 'addCategories' %}" method='post'
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name='name'class="form-control"
+                    placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" name='description'class="form-control"
+                    placeholder="Enter description">
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" name='location'class="form-control"
+                    placeholder="Enter location">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" name='price'class="form-control"
+                    placeholder="Enter price">
+            </div>
+            <div class="form-group">
+                <label>Manager</label>
+                <select id="managers" name="managers">
+                    {% for i in managers%}
+                    <option value="">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="categories" name="categories">
+                    {% for i in categories%}
+                    <option value="">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image">
+                    <label class="custom-file-label" for="customFile">Choose
+                        Image File</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

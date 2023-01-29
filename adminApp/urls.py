@@ -12,7 +12,8 @@ urlpatterns = [
     path('add-manager/', views.addManager, name='addManager'),
     path('update-manager/<int:id>', views.updateManager, name='updateManager'),
     path('turfs/', views.viewTurfs, name='viewTurfs'),
-    path('delete-turf/<int:id>', views.deleteTurf, name='deleteTurf')
+    path('delete-turf/<int:id>', views.deleteTurf, name='deleteTurf'),
+    path('add-turf/', views.addTurf, name='addTurf')
 
 ]
  
