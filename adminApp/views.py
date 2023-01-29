@@ -80,10 +80,24 @@ def updateManager(request, id):
             Managerdb.objects.filter(id=id).update(name=name_u, email=email_u, password=password_u, image=file)
             return redirect('view')
 
-
-
 def viewTurfs(request):
     data = Turfdb.objects.all()
     return render(request, 'view-turfs.html', {'data': data})
+
+
+# def addTurf(request):
+#     if request.method == 'POST':
+#         name_u = request.POST['name']
+#         description_u = request.POST['description']
+#         image_u = request.FILES['image']
+#         price_u = request.POST['price']
+#         location_u = request.POST['location']
+
+
+def deleteTurf(request, id):
+    Turfdb.objects.filter(id=id).delete()
+    return redirect('viewTurfs')
+    
+
 
 
