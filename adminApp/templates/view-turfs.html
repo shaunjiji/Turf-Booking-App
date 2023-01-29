@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block title%}
+{% endblock title%}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Simple Tables -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center
+                justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Turf</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Manager</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data%}
+                        <tr>
+                            <td><img src="{{i.image.url}}" style="width: 50px;
+                                    height: 50px;"></td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.location}}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.price}}</td>
+                            <td>{{i.manager.name}}</td>
+                            <td><button>Edit</button></td>
+                            <td><a href="#"><button>Delete</button></a></td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}
