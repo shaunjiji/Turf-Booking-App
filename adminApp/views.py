@@ -92,8 +92,11 @@ def addTurf(request):
         image_u = request.FILES['image']
         price_u = request.POST['price']
         location_u = request.POST['location']
-        data = Turfdb(name=name_u, desciprtion=description_u, image=image_u, price=price_u, location=location_u)
+        manager  = request.POST['managers']
+        category = request.POST['categories']
+        data = Turfdb(name=name_u, description=description_u, image=image_u, price=price_u, location=location_u, managerid=Managerdb.objects.get(id=manager), categoryid=Categorydb.objects.get(id=category))
         data.save()
+        return redirect('viewTurfs')
 
     elif request.method == 'GET':
         managers = Managerdb.objects.all()

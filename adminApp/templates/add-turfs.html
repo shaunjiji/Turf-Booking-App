@@ -5,10 +5,10 @@
 <div class="card mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center
         justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Add New Category</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Add New Turf</h6>
     </div>
     <div class="card-body">
-        <form action="{% url 'addCategories' %}" method='post'
+        <form action="{% url 'addTurf' %}" method='post'
             enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
@@ -35,7 +35,7 @@
                 <label>Manager</label>
                 <select id="managers" name="managers">
                     {% for i in managers%}
-                    <option value="">{{i.name}}</option>
+                    <option value="{{i.id}}">{{i.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -43,7 +43,7 @@
                 <label>Category</label>
                 <select id="categories" name="categories">
                     {% for i in categories%}
-                    <option value="">{{i.name}}</option>
+                    <option value="{{i.id}}">{{i.name}}</option>
                     {% endfor %}
                 </select>
             </div>
