@@ -23,3 +23,4 @@ class Turfdb(models.Model):
     location = models.CharField(max_length=100)
     categoryid = models.ForeignKey(Categorydb, on_delete=CASCADE)
     managerid = models.ForeignKey(Managerdb, on_delete=CASCADE)
+

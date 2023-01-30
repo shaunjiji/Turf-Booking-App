@@ -106,7 +106,7 @@ def addTurf(request):
 
 def deleteTurf(request, id):
     Turfdb.objects.filter(id=id).delete()
-    return redirect('viewTurfs')
+    return redirect('viewTurfs')    
     
 
 
