@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from adminApp.models import Turfdb 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from datetime import datetime
 
 TIME_CHOICES = (
@@ -30,6 +30,9 @@ STATUS_CHOICES = (
     (PENDING, 'Pending'),
     (APPROVED, 'Approved'),
 )
+
+class User(AbstractUser):
+    phone_number = models.CharField(max_length=30)
 
 class Bookingdb(models.Model):
     userid = models.ForeignKey(User, on_delete=CASCADE)
