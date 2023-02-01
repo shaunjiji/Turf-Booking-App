@@ -1,20 +1,42 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from managerApp.models import Turfdb 
+from adminApp.models import Turfdb 
+from django.contrib.auth.models import User
+from datetime import datetime
 
-# Create your models here.
-##user table, login, password
-##bookings table
-##
+TIME_CHOICES = (
+    ("3 PM", "3 PM"),
+    ("3:30 PM", "3:30 PM"),
+    ("4 PM", "4 PM"),
+    ("4:30 PM", "4:30 PM"),
+    ("5 PM", "5 PM"),
+    ("5:30 PM", "5:30 PM"),
+    ("6 PM", "6 PM"),
+    ("6:30 PM", "6:30 PM"),
+    ("7 PM", "7 PM"),
+    ("7:30 PM", "7:30 PM"),
+    ("8:00 PM", "8:00 PM"),
+    ("8:30 PM", "8:30 PM"),
+    ("9:00 PM", "9:00 PM"),
+    ("9:30 PM", "9:30 PM"),
+    ("10:00 PM", "10:00 PM"),
+    ("10:30 PM", "10:30 PM"),
+    ("11:00 PM", "11:00 PM"),
+)
 
-class Userdb(models.Model):
-    email = models.EmailField()
-    password = models.CharField(max_length=20)
-    name = models.CharField(max_length=100)
+PENDING = 0
+APPROVED = 1
+STATUS_CHOICES = (
+    (PENDING, 'Pending'),
+    (APPROVED, 'Approved'),
+)
 
 class Bookingdb(models.Model):
-    userid = models.ForeignKey(Userdb, on_delete=CASCADE)
+    userid = models.ForeignKey(User, on_delete=CASCADE)
     turfid = models.ForeignKey(Turfdb, on_delete=CASCADE)
     date = models.DateField()
-    time = models.TimeField()
+    time = models.CharField(max_length=100,choices=TIME_CHOICES)
+    time_booked = models.DateTimeField(default=datetime.now)
+    status = models.CharField(max_length=100,choices= STATUS_CHOICES, default='Pending')
+
 
