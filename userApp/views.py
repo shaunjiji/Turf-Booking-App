@@ -10,7 +10,7 @@ def getHome(request):
 
 def viewTurfs(request):
     data = Turfdb.objects.all()
-    return render(request, 'turfs.thml', {'data': data})
+    return render(request, 'turfs.html', {'data': data})
 
 
 def signup(request):
