@@ -12,7 +12,15 @@ def viewTurfs(request):
     data = Turfdb.objects.all()
     return render(request, 'turfs.html', {'data': data})
 
-
 def signup(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+    form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+def login(request):
+    return render (request, 'login.html')
+
+
+
+##user can book a turf, must be signed in and autheticated in order to do so. checks to see if turf is available for that timeslot
+##user needs to be able to logout
+##user can view his/her upcoming bookings, delete booking or edit booking
