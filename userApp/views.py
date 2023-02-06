@@ -13,7 +13,7 @@ def viewTurfs(request):
     return render(request, 'turfs.html', {'data': data})
 
 def signup(request):
-    form = UserCreationForm()
+    form = UserCreationForm()   
     return render(request, 'signup.html', {'form': form})
 
 def login(request):
