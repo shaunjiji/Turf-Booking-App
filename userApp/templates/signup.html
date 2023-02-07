@@ -5,7 +5,6 @@
 
 {% block content %}
 
-<!-- Start Align Area -->
 <div class="whole-wrap">
     <div class="container" id="signup-container">
         <!-- form itself end-->
@@ -15,31 +14,37 @@
                 <div class="col-lg-8 col-md-8">
                     <form action="#">
                         <div class="mt-10">
+                            <label for="primary-input">First Name</label>
                             <input type="text" name="first_name"
                                 placeholder="First Name">
                         </div>
                         <div class="mt-10">
+                            <label for="primary-input">Last Name</label>
                             <input type="text" name="last_name"
                                 placeholder="Last Name"
                                 name="last_name">
                         </div>
                         <div class="mt-10">
+                            <label for="primary-input">Email</label>
                             <input type="email" name="email"
                                 placeholder="Email"
                                 name="email">
                         </div>
                         <div class="mt-10">
+                            <label for="primary-input">Password</label>
                             <input type="password"
                                 id="password" name="password" value=""
                                 placeholder="Password">
                         </div>
                         <div class="mt-10">
+                            <label for="primary-input">Repeat Password</label>
                             <input type="password"
                                 id="password" name="password" value=""
                                 placeholder="Password">
                         </div>
                         <div class="button-group-area mt-10">
-                            <a href="#" class="genric-btn success-border">Register</a>
+                            <a href="#" class="genric-btn success circle">Register<span
+                                    class="lnr lnr-arrow-right"></span></a>
                         </div>
 
                     </form>
@@ -48,9 +53,5 @@
         </div>
     </div>
 </div>
-<!-- End Align Area -->
-
-
 
 {% endblock %}
-<!-- form itself end -->
