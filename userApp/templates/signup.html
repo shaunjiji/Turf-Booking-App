@@ -12,7 +12,9 @@
             <h3 class="mb-30">Welcome! Please Register</h3>
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    <form action="#">
+                    <form action="{% url 'register' %}" method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="mt-10">
                             <label for="primary-input">First Name</label>
                             <input type="text" name="first_name"
@@ -33,25 +35,26 @@
                         <div class="mt-10">
                             <label for="primary-input">Password</label>
                             <input type="password"
-                                id="password" name="password" value=""
+                                id="password" name="password1" value=""
                                 placeholder="Password">
                         </div>
                         <div class="mt-10">
                             <label for="primary-input">Repeat Password</label>
                             <input type="password"
-                                id="password" name="password" value=""
+                                id="password" name="password2" value=""
                                 placeholder="Password">
                         </div>
                         <div class="button-group-area mt-10">
-                            <a href="#" class="genric-btn success circle">Register<span
-                                    class="lnr lnr-arrow-right"></span></a>
-                        </div>
+                            <button type='submit' class="genric-btn success
+                                circle">Register<span
+                                    class="lnr lnr-arrow-right"></span>
+                            </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-{% endblock %}
+    {% endblock %}
