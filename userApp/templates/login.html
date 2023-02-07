@@ -1,0 +1,43 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="whole-wrap">
+    <div class="container" id="signup-container">
+        <!-- form itself end-->
+        <div class="section-top-border">
+            <h3 class="mb-30">Welcome! Please Login</h3>
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <form action="{% url 'register' %}" method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mt-10">
+                            <label for="primary-input">Email</label>
+                            <input type="email" name="email"
+                                placeholder="Enter Email"
+                                name="email">
+                        </div>
+                        <div class="mt-10">
+                            <label for="primary-input">Password</label>
+                            <input type="password"
+                                id="password" name="password"
+                                placeholder="Enter Password">
+                        </div>
+                        <div class="button-group-area mt-10">
+                            <button type='submit' class="genric-btn success
+                                circle">Login<span
+                                    class="lnr lnr-arrow-right"></span>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

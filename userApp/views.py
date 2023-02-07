@@ -32,6 +32,7 @@ def register(request):
                 user = User.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password1)
                 user.save()
                 print('user created')
+                return redirect('viewTurfs')
         else:
             print('Passwords do not match')
         return redirect('signup')
