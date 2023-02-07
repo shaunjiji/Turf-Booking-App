@@ -19,11 +19,22 @@ def register(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
+        username = request.POST['username']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        
-    else:
-        return render(request, 'signup.html')
+
+        if password1==password2:
+            if User.objects.filter(email=email).exists():
+                print('Email has been taken')
+            elif User.objects.filter(username=username).exists():
+                print('Username has been taken')
+            else:
+                user = User.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password1)
+                user.save()
+                print('user created')
+        else:
+            print('Passwords do not match')
+        return redirect('signup')
 
 def login(request):
     return render (request, 'login.html')
