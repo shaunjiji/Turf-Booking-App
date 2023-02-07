@@ -11,11 +11,10 @@ def viewTurfs(request):
     data = Turfdb.objects.all()
     return render(request, 'turfs.html', {'data': data})
 
-def signup(request):
-    return render(request, 'signup.html')
-
 def register(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render(request, 'signup.html')
+    elif request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
@@ -38,7 +37,9 @@ def register(request):
         return redirect('signup')
 
 def login(request):
-    return render (request, 'login.html')
+    if request.method == 'GET':   
+        return render (request, 'login.html')
+    
 
 
 
