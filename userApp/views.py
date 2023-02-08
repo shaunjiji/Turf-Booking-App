@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from . models import *
 
 # Create your views here.
@@ -14,7 +15,7 @@ def viewTurfs(request):
 def register(request):
     if request.method == 'GET':
         return render(request, 'signup.html')
-    elif request.method == 'POST':
+    else:
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
@@ -34,11 +35,26 @@ def register(request):
                 return redirect('viewTurfs')
         else:
             print('Passwords do not match')
-        return redirect('signup')
+        return render(request, 'signup.html')
 
 def login(request):
     if request.method == 'GET':   
         return render (request, 'login.html')
+    elif request.user.is_authenticated:
+        return render(request, 'turfs.html')
+    else:
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request,user)
+            return render(request, 'turfs.html')
+        else:
+            return render(request, 'signup.html')
+            
+    
+
+    
     
 
 
