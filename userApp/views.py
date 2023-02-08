@@ -37,24 +37,28 @@ def register(request):
             print('Passwords do not match')
         return render(request, 'signup.html')
 
-def login(request):
-    if request.method == 'GET':   
-        return render (request, 'login.html')
-    elif request.user.is_authenticated:
+def signin(request):
+    if request.user.is_authenticated:
         return render(request, 'turfs.html')
     else:
         email = request.POST['email']
         password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(email=email, password=password)
         if user is not None:
             login(request,user)
+            print('user logged in')
             return render(request, 'turfs.html')
         else:
+            print('incorrect login info')
             return render(request, 'signup.html')
-            
-    
+
+def login_view(request):
+    if request.method == 'GET':   
+        return render (request, 'login.html')
 
     
+def turf_view(request):
+    return render (request, 'turf.html')
     
 
 
