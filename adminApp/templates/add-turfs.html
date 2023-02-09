@@ -42,8 +42,8 @@
             <div class="form-group">
                 <label>Category</label>
                 <select id="categories" name="categories">
-                    {% for i in categories%}
-                    <option value="{{i.id}}">{{i.name}}</option>
+                    {% for i in time %}
+                    <option value="{{i.id}}">{{i}}</option>
                     {% endfor %}
                 </select>
             </div>

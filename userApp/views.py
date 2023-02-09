@@ -59,7 +59,8 @@ def login_view(request):
     
 def turf_view(request, id):
     data = Turfdb.objects.filter(id=id)
-    return render (request, 'turf.html', {'data': data})
+    time = TIME_CHOICES
+    return render (request, 'turf.html', {'data': data}, {'time': time})
     
 
 

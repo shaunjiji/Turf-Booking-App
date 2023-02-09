@@ -6,8 +6,7 @@
 
 
 <!-- bradcam_area_start -->
-<div class="bradcam_area breadcam_bg">
-   <h3>single blog</h3>
+<div class="bradcam_area breadcam_bg" id="header_image">
 </div>
 <!-- bradcam_area_end -->
 
@@ -16,73 +15,38 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-8 posts-list">
+            {% for i in data %}
             <div class="single-post">
                <div class="feature-img">
-                  <img class="img-fluid" src="img/blog/single_blog_1.png"
+                  <img class="img-fluid" src="{{i.image.url}}" style="height:
+                     300px; width: 500px;"
                      alt="">
                </div>
                <div class="blog_details">
-                  <h2>Second divided from form fish beast made every of seas
-                     all gathered us saying he our
-                  </h2>
-                  <ul class="blog-info-link mt-3 mb-4">
-                     <li><a href="#"><i class="fa fa-user"></i> Travel,
-                           Lifestyle</a></li>
-                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                  <h2>{{i.name}}
+                  </h2> <ul class="blog-info-link mt-3 mb-4">
+                     <li><a href="#"><i class="fa fa-user"></i> {{i.location}}</a></li>
                   </ul>
                   <p class="excert">
-                     MCSE boot camps have its supporters and its detractors.
-                     Some people do not understand why you
-                     should have to spend money on boot camp when you can get
-                     the MCSE study materials yourself at a
-                     fraction of the camp price. However, who has the willpower
-                  </p>
-                  <p>
-                     MCSE boot camps have its supporters and its detractors.
-                     Some people do not understand why you
-                     should have to spend money on boot camp when you can get
-                     the MCSE study materials yourself at a
-                     fraction of the camp price. However, who has the willpower
-                     to actually sit through a
-                     self-imposed MCSE training. who has the willpower to
-                     actually
-                  </p>
-                  <div class="quote-wrapper">
-                     <div class="quotes">
-                        MCSE boot camps have its supporters and its detractors.
-                        Some people do not understand why you
-                        should have to spend money on boot camp when you can get
-                        the MCSE study materials yourself at
-                        a fraction of the camp price. However, who has the
-                        willpower to actually sit through a
-                        self-imposed MCSE training.
-                     </div>
-                  </div>
-                  <p>
-                     MCSE boot camps have its supporters and its detractors.
-                     Some people do not understand why you
-                     should have to spend money on boot camp when you can get
-                     the MCSE study materials yourself at a
-                     fraction of the camp price. However, who has the willpower
-                  </p>
-                  <p>
-                     MCSE boot camps have its supporters and its detractors.
-                     Some people do not understand why you
-                     should have to spend money on boot camp when you can get
-                     the MCSE study materials yourself at a
-                     fraction of the camp price. However, who has the willpower
-                     to actually sit through a
-                     self-imposed MCSE training. who has the willpower to
-                     actually
+                     {{i.description}}
                   </p>
                </div>
             </div>
-
-
-
+            {% endfor %}
          </div>
-
       </div>
+      <form action="#" method="#" enctype="multipart/form-data">
+         {% csrf_token %}
+         <input class="datepicker" type="date" id="date">
+         <div>
+            <select id="time" name="time">
+               {% for i in time %}
+               <option value="{{i.id}}">{{i}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <button class="'book_now">Book Now</button>
+      </form>
    </div>
 </section>
 <!--================ Blog Area end =================-->
