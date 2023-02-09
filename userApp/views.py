@@ -38,19 +38,20 @@ def register(request):
         return render(request, 'signup.html')
 
 def signin(request):
-    if request.user.is_authenticated:
+    email = request.POST['email']
+    password = request.POST['password']
+    user = authenticate(email=email, password=password)
+    print(user)
+    if user is not None:
+        print(email, password)
+        login(request,user)
+        print('user logged in', user)
+        request.session['email'] = email
+        request.session['password'] = password   
         return render(request, 'turfs.html')
     else:
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(email=email, password=password)
-        if user is not None:
-            login(request,user)
-            print('user logged in')
-            return render(request, 'turfs.html')
-        else:
-            print('incorrect login info')
-            return render(request, 'signup.html')
+        print('incorrect login info')
+        return render(request, 'signup.html')
 
 def login_view(request):
     if request.method == 'GET':   
@@ -60,7 +61,7 @@ def login_view(request):
 def turf_view(request, id):
     data = Turfdb.objects.filter(id=id)
     time = TIME_CHOICES
-    return render (request, 'turf.html', {'data': data}, {'time': time})
+    return render (request, 'turf.html', {'data': data, 'time': time})
     
 
 
