@@ -57,8 +57,9 @@ def login_view(request):
         return render (request, 'login.html')
 
     
-def turf_view(request):
-    return render (request, 'turf.html')
+def turf_view(request, id):
+    data = Turfdb.objects.filter(id=id)
+    return render (request, 'turf.html', {'data': data})
     
 
 
