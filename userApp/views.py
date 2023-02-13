@@ -38,15 +38,15 @@ def register(request):
         return render(request, 'signup.html')
 
 def signin(request):
-    email = request.POST['email']
+    username = request.POST['username']
     password = request.POST['password']
-    user = authenticate(email=email, password=password)
+    user = authenticate(username=username, password=password)
     print(user)
     if user is not None:
-        print(email, password)
+        print(username, password)
         login(request,user)
         print('user logged in', user)
-        request.session['email'] = email
+        request.session['username'] = username
         request.session['password'] = password   
         return render(request, 'turfs.html')
     else:
