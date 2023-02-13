@@ -35,9 +35,10 @@
             {% endfor %}
          </div>
       </div>
-      <form action="#" method="#" enctype="multipart/form-data">
+      <form action="{% url 'bookTurf' %}" method="post"
+         enctype="multipart/form-data">
          {% csrf_token %}
-         <input class="datepicker" type="date" id="date">
+         <input class="datepicker" type="date" id="date" name="date">
          <div>
             <select id="time" name="time">
                {% for i in time %}
@@ -45,7 +46,7 @@
                {% endfor %}
             </select>
          </div>
-         <button class="'book_now">Book Now</button>
+         <button class="'book_now" type="submit">Book Now</button>
       </form>
    </div>
 </section>
