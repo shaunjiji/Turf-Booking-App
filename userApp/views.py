@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from . models import *
+from django.http import HttpResponse
+
 
 # Create your views here.
 
@@ -43,9 +45,7 @@ def signin(request):
     user = authenticate(username=username, password=password)
     print(user)
     if user is not None:
-        print(username, password)
         login(request,user)
-        print('user logged in', user)
         request.session['username'] = username
         request.session['password'] = password   
         return redirect('viewTurfs')
@@ -61,13 +61,25 @@ def login_view(request):
 def turf_view(request, id):
     data = Turfdb.objects.filter(id=id)
     time = TIME_CHOICES
-    return render (request, 'turf.html', {'data': data, 'time': time})
+    return render (request, 'turf.html', {'data': data, 'time': time, 'id': id })
     
 
 def book_turf(request):
+        user = User.objects.get(id=3)
         date = request.POST['date']
         time = request.POST['time']
-        #Bookingdb.objects.filter(pass variable).exists()
+        print('time:', time)
+        print('date:', date)
+        id = request.POST['turf']
+        turf = Turfdb.objects.get(id=id)
+        if Bookingdb.objects.filter(userid=user,turfid=turf, date=date, time=time).exists():
+            print('venue has already been booked for this time')
+            return HttpResponse('venue has already been booked for this time')
+        else:
+            user 
+            data = Bookingdb(userid=user,turfid=turf, date=date, time=time)
+            data.save()
+            return HttpResponse('reservation has been sent')
 
 
 ##user can book a turf, must be signed in and autheticated in order to do so. checks to see if turf is available for that timeslot

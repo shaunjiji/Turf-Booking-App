@@ -39,6 +39,7 @@
          enctype="multipart/form-data">
          {% csrf_token %}
          <input class="datepicker" type="date" id="date" name="date">
+         <input type='hidden' value="{{id}}" name="turf">
          <div>
             <select id="time" name="time">
                {% for i in time %}
