@@ -38,15 +38,8 @@
       <form action="{% url 'bookTurf' %}" method="post"
          enctype="multipart/form-data">
          {% csrf_token %}
-         <input class="datepicker" type="date" id="date" name="date">
-         <input type='hidden' value="{{id}}" name="turf">
-         <div>
-            <select id="time" name="time">
-               {% for i in time %}
-               <option value="{{i.id}}">{{i}}</option>
-               {% endfor %}
-            </select>
-         </div>
+         <input type="hidden" value="{{id}}" name="turf">
+         {{ form.as_p }}
          <button class="'book_now" type="submit">Book Now</button>
       </form>
    </div>

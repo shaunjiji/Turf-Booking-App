@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from . models import *
 from django.http import HttpResponse
-
+from .forms import BookingForm
 
 # Create your views here.
 
@@ -65,25 +65,23 @@ def login_view(request):
     
 def turf_view(request, id):
     data = Turfdb.objects.filter(id=id)
-    time = TIME_CHOICES
-    return render (request, 'turf.html', {'data': data, 'time': time, 'id': id })
+    form = BookingForm
+    return render (request, 'turf.html', {'data': data, 'form': form, 'id': id })
     
 
 def book_turf(request):
     if request.user.is_authenticated:  
         userid = request.session.get('userid')
+        user = User.objects.get(id=userid)
         date = request.POST['date']
         time = request.POST['time']
-        print('time:', time)
-        print('date:', date)
-        print('userid:', userid)
         id = request.POST['turf']
         turf = Turfdb.objects.get(id=id)
-        if Bookingdb.objects.filter(userid=userid,turfid=turf, date=date, time=time).exists():
+        if Bookingdb.objects.filter(turfid=turf, date=date, time=time).exists():
             print('venue has already been booked for this time')
             return HttpResponse('venue has already been booked for this time')
         else:
-            data = Bookingdb(userid=userid,turfid=turf, date=date, time=time)
+            data = Bookingdb(userid=user,turfid=turf, date=date, time=time)
             data.save()
             return HttpResponse('reservation has been sent')
     else:
