@@ -56,7 +56,8 @@ def signin(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('viewTurfs')
+        return redirect('viewTurfs') 
+    # redirect to user panels
     
     else:   
         return render (request, 'login.html')
@@ -69,21 +70,24 @@ def turf_view(request, id):
     
 
 def book_turf(request):
-        user = User.objects.get(id=3)
+    if request.user.is_authenticated:  
+        userid = request.session.get('userid')
         date = request.POST['date']
         time = request.POST['time']
         print('time:', time)
         print('date:', date)
+        print('userid:', userid)
         id = request.POST['turf']
         turf = Turfdb.objects.get(id=id)
-        if Bookingdb.objects.filter(userid=user,turfid=turf, date=date, time=time).exists():
+        if Bookingdb.objects.filter(userid=userid,turfid=turf, date=date, time=time).exists():
             print('venue has already been booked for this time')
             return HttpResponse('venue has already been booked for this time')
         else:
-            user 
-            data = Bookingdb(userid=user,turfid=turf, date=date, time=time)
+            data = Bookingdb(userid=userid,turfid=turf, date=date, time=time)
             data.save()
             return HttpResponse('reservation has been sent')
+    else:
+        return redirect ('login_view')
 
 
 ##user can book a turf, must be signed in and autheticated in order to do so. checks to see if turf is available for that timeslot
