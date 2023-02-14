@@ -43,18 +43,22 @@ def signin(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
-    print(user)
+    userid = user.id
     if user is not None:
         login(request,user)
         request.session['username'] = username
-        request.session['password'] = password   
+        request.session['password'] = password 
+        request.session['userid'] = userid
         return redirect('viewTurfs')
     else:
         print('incorrect login info')
         return render(request, 'signup.html')
 
 def login_view(request):
-    if request.method == 'GET':   
+    if request.user.is_authenticated:
+        return redirect('viewTurfs')
+    
+    else:   
         return render (request, 'login.html')
 
     
