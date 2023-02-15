@@ -9,11 +9,8 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="{% url 'home' %}">Home</a></li>
-                                    <li><a class="active"
-                                            href="{% url 'viewTurfs' %}">Turfs</a></li>
-                                    <li><a href="about.html">My Account</a></li>
+                                    <li><a href="{% url 'viewTurfs' %}">Turfs</a></li>
                                     <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -21,16 +18,23 @@
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo-img">
                             <a href="index.html">
-
                             </a>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-4 d-none d-lg-block">
                         <div class="book_room">
+                            {% if 'userid' in request.session %}
                             <div class="book_btn d-none d-lg-block">
-                                <a class="popup-with-form"
-                                    href="#test-form">Login/Register</a>
+                                <a href="#test-form">Log Out</a>
                             </div>
+                            {% else %}
+                            <div class="book_btn d-none d-lg-block">
+                                <a href="{% url 'login_view' %}">Login</a>
+                            </div>
+                            <div class="book_btn d-none d-lg-block">
+                                <a href="{% url 'register' %}">Register</a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-12">
