@@ -7,6 +7,32 @@
 
 <div class="whole-wrap">
     <div class="container" id="signup-container">
-    </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Turf</th>
+                        <th>Location</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                        <th>Status</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data%}
+                    <tr>
+                        <td>{{i.turfid.name}}</td>
+                        <td>{{i.turfid.location}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.time}}</td>
+                        <td>{{i.status}}</td>
+                        <td><a href="{% url 'deleteCategory' id=i.id %}"><button>Delete</button></a></td>
+                    </tr>
+                    {% endfor %}
 
-    {% endblock %}
+                </tbody>
+            </table>
+        </div>
+
+        {% endblock %}

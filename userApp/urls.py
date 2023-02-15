@@ -11,7 +11,6 @@ urlpatterns = [
     path('book-turf/', views.book_turf, name = 'bookTurf'),
     path('logout/', views.logout, name='logout'),
     path('bookings/', views.bookings_view, name='bookings')
-
 ]
  
  
