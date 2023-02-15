@@ -93,6 +93,12 @@ def logout(request):
     del request.session['userid'] 
     return render (request, 'login.html')
 
-##user can book a turf, must be signed in and autheticated in order to do so. checks to see if turf is available for that timeslot
-##user needs to be able to logout
+def bookings_view(request):
+    if 'userid' in request.session:
+        userid = request.session.get('userid')
+        user = User.objects.get(id=userid)
+        data = Bookingdb.objects.filter(userid=user)
+        return render (request, 'bookings.html', {'data': data})
+
+
 ##user can view his/her upcoming bookings, delete booking or edit booking
