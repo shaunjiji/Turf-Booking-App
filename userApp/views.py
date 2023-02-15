@@ -99,6 +99,8 @@ def bookings_view(request):
         user = User.objects.get(id=userid)
         data = Bookingdb.objects.filter(userid=user)
         return render (request, 'bookings.html', {'data': data})
+    else:
+        return render (request, 'login.html')
 
 
 ##user can view his/her upcoming bookings, delete booking or edit booking
