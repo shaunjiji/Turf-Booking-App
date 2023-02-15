@@ -6,6 +6,7 @@
 {% block content %}
 
 <div class="whole-wrap">
+    {% if data is not None %}
     <div class="container" id="signup-container">
         <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -27,12 +28,18 @@
                         <td>{{i.date}}</td>
                         <td>{{i.time}}</td>
                         <td>{{i.status}}</td>
-                        <td><a href="{% url 'deleteCategory' id=i.id %}"><button>Delete</button></a></td>
+                        <td><a href="{% url 'delete-booking' id=i.id %}"><button>Delete</button></a></td>
                     </tr>
                     {% endfor %}
 
                 </tbody>
             </table>
         </div>
-
-        {% endblock %}
+    </div>
+    {% else %}
+    <div>
+        <p>No bookings have been made</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

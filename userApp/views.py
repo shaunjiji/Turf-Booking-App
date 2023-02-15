@@ -102,6 +102,8 @@ def bookings_view(request):
     else:
         return render (request, 'login.html')
 
-# def delete_booking(request, id):
+def delete_booking(request, id):
+    Bookingdb.objects.filter(id=id).delete()
+    return render (request, 'bookings.html')
 
 ##user can view his/her upcoming bookings, delete booking or edit booking
