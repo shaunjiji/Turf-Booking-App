@@ -10,10 +10,10 @@
                                 <ul id="navigation">
                                     <li><a href="{% url 'home' %}">Home</a></li>
                                     <li><a href="{% url 'viewTurfs' %}">Turfs</a></li>
-                                    <li><a href="about.html">About</a></li>
                                     {% if 'userid' in request.session %}
                                     <li><a href="about.html">View Bookings</a></li>
                                     {% endif %}
+                                    <li><a href="about.html">About</a></li>
                                 </ul>
                             </nav>
                         </div>

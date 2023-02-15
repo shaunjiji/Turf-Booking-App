@@ -87,6 +87,10 @@ def book_turf(request):
     else:
         return redirect ('login_view')
 
+def logout(request):
+    del request.session['username'] 
+    del request.session['password']
+    del request.session['userid'] 
 
 ##user can book a turf, must be signed in and autheticated in order to do so. checks to see if turf is available for that timeslot
 ##user needs to be able to logout
