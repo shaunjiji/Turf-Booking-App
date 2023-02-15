@@ -28,7 +28,7 @@
                         <div class="book_room">
                             {% if 'userid' in request.session %}
                             <div class="book_btn d-none d-lg-block">
-                                <a href="#test-form">Log Out</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
                             </div>
                             {% else %}
                             <div class="book_btn d-none d-lg-block">
