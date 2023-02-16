@@ -15,16 +15,18 @@
                     <form action="{% url 'signin' %}" method="post"
                         enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="mt-10">
-                            <label for="primary-input">Username</label>
-                            <input type="username" name="username"
-                                placeholder="Enter Username">
-                        </div>
-                        <div class="mt-10">
-                            <label for="primary-input">Password</label>
-                            <input type="password"
-                                id="password" name="password"
-                                placeholder="Enter Password">
+                        <div class="row">
+                            <div class="mt-10">
+                                <label for="primary-input">Username</label>
+                                <input type="username" name="username"
+                                    placeholder="Enter Username">
+                            </div>
+                            <div class="mt-10">
+                                <label for="primary-input">Password</label>
+                                <input type="password"
+                                    id="password" name="password"
+                                    placeholder="Enter Password">
+                            </div>
                         </div>
                         <div class="button-group-area mt-10">
                             <button type='submit' class="genric-btn success

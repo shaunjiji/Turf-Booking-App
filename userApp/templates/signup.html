@@ -10,11 +10,11 @@
         <!-- form itself end-->
         <div class="section-top-border">
             <h3 class="mb-30">Welcome! Please Register</h3>
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <form action="{% url 'register' %}" method="post"
-                        enctype="multipart/form-data">
-                        {% csrf_token %}
+            <div class="col-lg-8 col-md-8">
+                <form action="{% url 'register' %}" method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class='row'>
                         <div class="mt-10">
                             <label for="primary-input">First Name</label>
                             <input type="text" name="first_name"
@@ -26,6 +26,8 @@
                                 placeholder="Enter Last Name"
                                 name="last_name">
                         </div>
+                    </div>
+                    <div class='row'>
                         <div class="mt-10">
                             <label for="primary-input">Email</label>
                             <input type="email" name="email"
@@ -38,6 +40,8 @@
                                 placeholder="Enter Username"
                                 name="username">
                         </div>
+                    </div>
+                    <div class='row'>
                         <div class="mt-10">
                             <label for="primary-input">Password</label>
                             <input type="password"
@@ -50,17 +54,17 @@
                                 id="password" name="password2" value=""
                                 placeholder="Confirm Password">
                         </div>
-                        <div class="button-group-area mt-10">
-                            <button type='submit' class="genric-btn success
-                                circle">Register<span
-                                    class="lnr lnr-arrow-right"></span>
-                            </div>
-
-                        </form>
                     </div>
-                </div>
+                    <div class="button-group-area mt-10">
+                        <button type='submit' class="genric-btn success
+                            circle">Register<span
+                                class="lnr lnr-arrow-right"></span>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
