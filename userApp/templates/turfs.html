@@ -9,7 +9,7 @@
 </div>
 <!-- bradcam_area_end -->
 <!-- offers_area_start -->
-<div class="offers_area padding_top" id="offers_area">
+<!-- <div class="offers_area padding_top" id="offers_area">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -20,9 +20,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- offers_area_end -->
-<div class="offers_area padding_top">
+<!-- <div class="offers_area padding_top">
     <div class="container">
         <div class="row">
             {% for i in data %}
@@ -44,7 +44,44 @@
             {% endfor %}
         </div>
     </div>
+</div> -->
+
+<!-- features_room_startt -->
+<div class="features_room">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-100">
+                    <span>Featured Turfs</span>
+                    <h3>Book your Turf</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rooms_here">
+        {% for i in data %}
+        <div class="single_rooms">
+            <div class="room_thumb">
+                <img src="{{i.image.url}}" style="width: 699.5px;
+                    height: 437.19px;">
+                <div class="room_heading d-flex justify-content-between
+                    align-items-center">
+                    <div class="room_heading_inner">
+                        <span>${{i.price}} per 30 minutes</span>
+                        <h3>{{i.name}}</h3>
+                    </div>
+                    <a href="{% url 'viewTurf' id=i.id %}" class="line-button">book
+                        now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+<!-- features_room_end -->
+
+
+
 
 
 {% endblock %}
