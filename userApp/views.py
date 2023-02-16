@@ -57,7 +57,6 @@ def signin(request):
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('viewTurfs') 
-    # redirect to user panels
     
     else:   
         return render (request, 'login.html')
@@ -104,6 +103,6 @@ def bookings_view(request):
 
 def delete_booking(request, id):
     Bookingdb.objects.filter(id=id).delete()
-    return render (request, 'bookings.html')
+    return redirect ('bookings')
 
 ##user can view his/her upcoming bookings, delete booking or edit booking
