@@ -4,7 +4,23 @@
 {% load static %}
 
 {% block content %}
-
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg" id="header_image">
+</div>
+<!-- bradcam_area_end -->
+<div class="offers_area padding_top" id="offers_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-100">
+                    {% if 'userid' in request.session %}
+                    <h3>{{request.session.name}}'s Bookings</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="whole-wrap">
     {% if data is not None %}
     <div class="container" id="signup-container">

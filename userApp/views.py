@@ -44,11 +44,13 @@ def signin(request):
     password = request.POST['password']
     user = authenticate(username=username, password=password)
     userid = user.id
+    name = user.first_name
     if user is not None:
         login(request,user)
         request.session['username'] = username
         request.session['password'] = password 
         request.session['userid'] = userid
+        request.session['name'] = name
         return redirect('viewTurfs')
     else:
         print('incorrect login info')
