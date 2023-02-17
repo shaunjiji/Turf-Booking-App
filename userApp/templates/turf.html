@@ -22,7 +22,42 @@
    </div>
 </div>
 <!--================Blog Area =================-->
-<section class="blog_area single-post-area section-padding">
+<!-- about_area_start -->
+<div class="about_area">
+   <div class="container">
+      {% for i in data %}
+      <div class="row">
+         <div class="col-xl-5 col-lg-5">
+            <div class="about_info">
+               <div class="section_title mb-20px">
+                  <span>About Us</span>
+                  <h3>{{i.name}}</h3>
+                  <h5>{{i.location}}</h5>
+                  <h5>${{i.price}}/ 30 mins</h5>
+               </div>
+               <p>{{i.description}}</p>
+            </div>
+         </div>
+         <div class="col-xl-7 col-lg-7">
+            <div class="about_thumb d-flex">
+               <div class="img_1">
+                  <img src="{{i.image.url}}" style="height:
+                     300px; width: 500px;" alt="">
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+      <form action="{% url 'bookTurf' %}" method="post"
+         enctype="multipart/form-data">
+         {% csrf_token %}
+         <input type="hidden" value="{{id}}" name="turf">
+         {{ form.as_p }}
+         <button class="'book_now" type="submit">Book Now</button>
+      </form>
+   </div>
+</div>
+<!-- <section class="blog_area single-post-area section-padding">
    <div class="container">
       <div class="row">
          <div class="col-lg-8 posts-list">
@@ -54,7 +89,7 @@
          <button class="'book_now" type="submit">Book Now</button>
       </form>
    </div>
-</section>
+</section> -->
 <!--================ Blog Area end =================-->
 
 {% endblock %}
