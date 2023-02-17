@@ -84,7 +84,7 @@ def book_turf(request):
         else:
             data = Bookingdb(userid=user,turfid=turf, date=date, time=time)
             data.save()
-            return HttpResponse('reservation has been sent')
+            return redirect('bookings')
     else:
         return redirect ('login_view')
 
