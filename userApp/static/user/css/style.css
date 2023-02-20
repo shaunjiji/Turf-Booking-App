@@ -15,3 +15,16 @@
 #offers_area{
     padding-bottom:0px;
 }
+#singleturf-image{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+}
+#singleturf-container{
+    padding-top: 80px;
+}
+#bookings-table{
+    width: 1110px;
+    height: 1400px;
+}

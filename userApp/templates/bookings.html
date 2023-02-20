@@ -25,8 +25,8 @@
     {% if data is not None %}
     <div class="container" id="signup-container">
         <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+            <table class="table" id="bookings-table">
+                <thead class="thead-dark">
                     <tr>
                         <th>Turf</th>
                         <th>Location</th>
@@ -44,7 +44,8 @@
                         <td>{{i.date}}</td>
                         <td>{{i.time}}</td>
                         <td>{{i.status}}</td>
-                        <td><a href="{% url 'delete-booking' id=i.id %}"><button>Delete</button></a></td>
+                        <td><a href="{% url 'delete-booking' id=i.id %}"><button
+                                    class="genric-btn danger circle">Delete</button></a></td>
                     </tr>
                     {% endfor %}
 
