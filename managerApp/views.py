@@ -5,7 +5,10 @@ from userApp.models import *
 # Create your views here.
 
 def manager_view(request):
-    return render (request,'manager-login.html')
+    if 'managerid' in request.session:
+        return redirect(manager_requests)
+    else:
+        return render (request,'manager-login.html')
 
 def manager_login(request):
     if request.method == 'POST':
