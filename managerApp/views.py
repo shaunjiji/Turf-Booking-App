@@ -27,10 +27,15 @@ def manager_requests(request):
             managerid = request.session['managerid']
             turf = Turfdb.objects.filter(managerid=managerid).first()
             turfid = turf.id
-            bookings = Bookingdb.objects.filter(turfid=turfid)
-            print ('TURF', turf)
-            print('TURFID', turfid)
-            print ('BOOKINGS', bookings)
+            bookings = Bookingdb.objects.filter(turfid=turfid, status='Pending')
             return render (request, 'requests.html', {'bookings': bookings})
         else:
             return render('manager-login.html')
+        
+def approve_request(request, id):
+    if request.method == 'POST':
+        if 'managerid' in request.session:
+            booking = Bookingdb.objects.get(id=id).update(status='Approved')
+            booking.save()
+            return redirect('manager_requests')
+            
