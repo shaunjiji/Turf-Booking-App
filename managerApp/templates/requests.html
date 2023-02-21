@@ -15,28 +15,21 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Image</th>
                             <th>Name</th>
-                            <th>Location</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Manager</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Approve Request</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for i in data%}
+                        {% for i in bookings %}
                         <tr>
-                            <td><img src="{{i.image.url}}" style="width: 50px;
-                                    height: 50px;"></td>
-                            <td>{{i.name}}</td>
-                            <td>{{i.location}}</td>
-                            <td>{{i.description}}</td>
-                            <td>{{i.price}}</td>
-                            <td>{{i.managerid.name}}</td>
-                            <td><button>Edit</button></td>
-                            <td><a href="{% url 'deleteTurf' id=i.id%}"><button>Delete</button></a></td>
+                            <td>{{i.turfid.name}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.time}}</td>
+                            <td>{{i.status}}</td>
+                            <td><a href="{% url 'deleteTurf' id=i.id%}"><button>Approve</button></a></td>
                         </tr>
                         {% endfor %}
 
