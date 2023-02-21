@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from adminApp.models import *
 
 # Create your views here.
@@ -11,8 +11,11 @@ def manager_login(request):
         email = request.POST['email']
         password = request.POST['password']
         if Managerdb.objects.filter(email=email,password=password).exists():
-            data = Managerdb.objects.filter(email=email, password=password).values('name', 'image').first()
+            data = Managerdb.objects.filter(email=email, password=password).values('name','id').first()
             request.session['name'] = data['name']
             request.session['managerid'] = data['id']
-            request.session['username'] = data['username']
-            request.session['password'] = data['password']
+            request.session['email'] = email
+            request.session['password'] = password
+            return render (request, 'manager-index.html')
+        else:
+            return redirect(manager_view)
