@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from adminApp.models import *
+from userApp.models import *
 
 # Create your views here.
 
@@ -19,3 +20,13 @@ def manager_login(request):
             return render (request, 'manager-index.html')
         else:
             return redirect(manager_view)
+        
+def manager_requests(request):
+    if request.method == 'GET':
+        if 'managerid' in request.session:
+            managerid = request.session['managerid']
+            turfs = Turfdb.objects.filter(managerid=managerid)
+            data = Bookingdb.objects.filter(turfid=turfs)
+            return render (request, 'requests.html', {'data':data})
+        else:
+            return render('manager-login.html')
