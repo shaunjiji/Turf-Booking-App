@@ -38,4 +38,7 @@ def approve_request(request, id):
             booking = Bookingdb.objects.get(id=id).update(status='Approved')
             booking.save()
             return redirect('manager_requests')
-            
+        else:
+            return redirect(manager_view)
+    else:
+        return redirect(manager_view)

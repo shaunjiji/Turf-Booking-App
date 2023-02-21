@@ -29,7 +29,7 @@
                             <td>{{i.date}}</td>
                             <td>{{i.time}}</td>
                             <td>{{i.status}}</td>
-                            <td><a href="{% url 'deleteTurf' id=i.id%}"><button
+                            <td><a href="{% url 'approve-request' id=i.id %}"><button
                                         class="btn btn-success mb-1">Approve</button></a></td>
                         </tr>
                         {% endfor %}
