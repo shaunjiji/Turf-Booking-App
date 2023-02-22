@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center
                 justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Managers</h6>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -31,8 +31,9 @@
                             <td>{{i.name}}</td>
                             <td>{{i.email}}</td>
                             <td>{{i.password}}</td>
-                            <td><button>Edit</button></td>
-                            <td><a href="{% url 'deleteManager' id=i.id %}"><button>Delete</button></a></td>
+                            <td><button class="btn btn-warning mb-1">Edit</button></td>
+                            <td><a href="{% url 'deleteManager' id=i.id %}"><button
+                                        class="btn btn-danger mb-1">Delete</button></a></td>
                         </tr>
                         {% endfor %}
 
