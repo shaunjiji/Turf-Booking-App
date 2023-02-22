@@ -36,12 +36,20 @@ def manager_requests(request):
             return render('manager-login.html')
         
 def approve_request(request, id):
-    if request.method == 'POST':
+    if request.method == 'GET':
         if 'managerid' in request.session:
-            booking = Bookingdb.objects.get(id=id).update(status='Approved')
+            booking = Bookingdb.objects.get(id=id)
+            booking.status = 'Approved'
             booking.save()
-            return redirect('manager_requests')
+            return redirect(manager_requests)
         else:
             return redirect(manager_view)
     else:
         return redirect(manager_view)
+    
+def manager_logout(request):
+    del request.session['name']
+    del request.session['managerid']
+    del request.session['email']
+    del request.session['password'] 
+    return render(request, 'manager-login.html')

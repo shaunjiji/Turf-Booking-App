@@ -59,12 +59,10 @@
                     <nav class="navbar navbar-expand navbar-light bg-navbar
                         topbar mb-4
                         static-top">
-
                         <ul class="navbar-nav ml-auto">
                             {% if 'managerid' in request.session %}
-                            <li class="nav-item dropdown no-arrow">
-                                <button class="btn btn-danger mb-1">Log Out</button>
-                            </li>
+                            <button href="{% url 'manager-logout' %}"
+                                class="btn btn-danger mb-1">Log Out</button>
                             {% else %}
                             <button href="{% url 'manager-login' %}" class="btn
                                 btn-success mb-1">Log In</button>
