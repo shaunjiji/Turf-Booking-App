@@ -61,8 +61,8 @@
                         static-top">
                         <ul class="navbar-nav ml-auto">
                             {% if 'managerid' in request.session %}
-                            <button href="{% url 'manager-logout' %}"
-                                class="btn btn-danger mb-1">Log Out</button>
+                            <a href="{% url 'manager-logout' %}"
+                                class="btn btn-danger mb-1">Log Out</a>
                             {% else %}
                             <button href="{% url 'manager-login' %}" class="btn
                                 btn-success mb-1">Log In</button>
