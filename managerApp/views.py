@@ -20,7 +20,7 @@ def manager_login(request):
             request.session['managerid'] = data['id']
             request.session['email'] = email
             request.session['password'] = password
-            return render (request, 'manager-index.html')
+            return redirect (manager_requests)
         else:
             return redirect(manager_view)
         
